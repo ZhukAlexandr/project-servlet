@@ -35,19 +35,19 @@
 <hr>
 <c:set var="CROSSES" value="<%=Sign.CROSS%>"></c:set>
 <c:set var="NOUGHTS" value="<%=Sign.NOUGHT%>"></c:set>
-<c:if test="${winner == CROSSES}">
-    <h1>CROSSES WIN!</h1>
-    <button type="button" onclick="restart()" class="btn btn-success">Start again</button>
-</c:if>
-<c:if test="${winner == NOUGHTS}">
-    <h1>NOUGHTS WIN!</h1>
-    <button type="button" onclick="restart()" class="btn btn-success">Start again</button>
-</c:if>
-<c:if test="${draw}">
-    <h1>IT'S A DRAW</h1>
-    <br>
-    <button type="button" onclick="restart()" class="btn btn-success">Start again</button>
-</c:if>
+<c:choose>
+    <c:when test="${winner == CROSSES}">
+        <h1>CROSSES WIN!</h1>
+    </c:when>
+    <c:when test="${winner == NOUGHTS}">
+        <h1>NOUGHTS WIN!</h1>
+    </c:when>
+    <c:when test="${draw}">
+        <h1>IT'S A DRAW</h1>
+    </c:when>
+</c:choose>
+
+<button type="button" onclick="restart()" class="btn btn-success">Start again</button>
 
 <script>
     function restart() {
